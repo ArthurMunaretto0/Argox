@@ -1,0 +1,184 @@
+:root{
+  --brand:#000000;
+  --ink:#0b1220;
+  --muted:#6b7280;
+  --bg:#959595;
+  --w:30mm;
+  --h:15mm;
+  --bar-area:42%; /* altura reservada pro código de barras (faixa vermelha do print) */
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink)
+}
+
+/* topbar */
+.topbar{
+  position:sticky;
+  top:0;
+  background:#959595;
+  border-bottom:1px solid #000000;
+  z-index:10
+}
+.topbar .wrap{
+  max-width:1100px;
+  margin:auto;
+  padding:12px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+.brand{font-weight:700;color:var(--brand)}
+.nav{display:flex;gap:10px}
+.nav-link{
+  padding:8px 12px;
+  border-radius:10px;
+  text-decoration:none;
+  color:#111;
+  border:1px solid transparent
+}
+.nav-link:hover{background:#e4ae51}
+.nav-link.active{
+  border-color:hsl(0, 0%, 0%);
+  background:#ffdf3d
+}
+
+/* container/cards */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:16px
+}
+.card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:16px;
+  box-shadow:0 1px 1px rgba(0,0,0,.03)
+}
+.h1{font-size:18px;margin:0 0 12px}
+.h2{font-size:16px;margin:0 0 10px}
+label{
+  display:block;
+  font-size:12px;
+  color:#374151;
+  margin:8px 0 4px
+}
+select,input,textarea{
+  width:100%;
+  padding:10px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  font-size:14px;
+  font-family:inherit
+}
+textarea.editor{
+  height:280px;
+  white-space:pre;
+  font-family:ui-monospace,Menlo,Consolas,monospace
+}
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  align-items:end
+}
+.grid3{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px
+}
+.btn{
+  appearance:none;
+  border:0;
+  border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:600
+}
+.btn-primary{
+  background:var(--brand);
+  color:#fff
+}
+.btn-outline{
+  background:#fff;
+  color:var(--brand);
+  border:1px solid var(--brand)
+}
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap
+}
+.hint{font-size:12px;color:var(--muted)}
+.out{
+  background:#f9fafb;
+  border:1px dashed #d1d5db;
+  border-radius:12px;
+  padding:12px;
+  margin-top:10px;
+  font-family:ui-monospace,Menlo,Consolas,monospace
+}
+.bigcode{
+  font-size:20px;
+  letter-spacing:2px;
+  font-weight:700
+}
+.label-preview{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:10px
+}
+
+/* etiqueta (prévia) */
+.label{
+  width:var(--w);
+  height:var(--h);
+  border:1px dashed #d1d5db;
+  background:#fff;
+  border-radius:6px;
+  padding:0.8mm 1.2mm;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between
+}
+.lab-body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  /* altura reservada pro bloco de barras, mesma ideia da caixa vermelha do print */
+  height:var(--bar-area);
+}
+.label.only-bar .lab-num{
+  font-size:7.5px;
+  text-align:center;
+  letter-spacing:1px;
+  margin-top:0.4mm
+}
+svg.bar{
+  width:100%;
+  height:100%;
+}
+
+/* impressão da página principal só quando o body tiver .print-main */
+@media print{
+  body.print-main * { visibility: hidden !important; }
+  body.print-main #printArea,
+  body.print-main #printArea * { visibility: visible !important; }
+  body.print-main #printArea{
+    position: fixed; left: 0; top: 0;
+    width: var(--w); height: var(--h);
+    display:block!important; margin:0; padding:0; overflow:hidden;
+  }
+  body.print-main #printArea .label{
+    width: var(--w); height: var(--h);
+    margin:0; border:0!important; page-break-after: always;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  body.print-main .topbar{ display:none !important; }
+}

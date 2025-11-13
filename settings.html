@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Configurações • Mapas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">Configurações</div>
+    <nav class="nav">
+      <a class="nav-link" href="index.html">Gerar</a>
+      <a class="nav-link active" href="settings.html">Configurações</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h1 class="h1">Mapas de Vendedores, Objetos e Materiais</h1>
+    <p class="hint">Edite os JSONs abaixo. Ao salvar, ficam no navegador (localStorage).</p>
+
+    <div class="grid3">
+      <div>
+        <label>Vendedores</label>
+        <textarea id="mapVend" class="editor" spellcheck="false"></textarea>
+      </div>
+      <div>
+        <label>Objetos</label>
+        <textarea id="mapObj" class="editor" spellcheck="false"></textarea>
+      </div>
+      <div>
+        <label>Materiais</label>
+        <textarea id="mapMat" class="editor" spellcheck="false"></textarea>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="btnSalvar">Salvar</button>
+      <button class="btn btn-outline" id="btnRestaurar">Restaurar padrão</button>
+    </div>
+  </section>
+</main>
+
+<script src="js/maps.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Etiquetas • OS-214plus</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">Gerador de Etiquetas</div>
+    <nav class="nav">
+      <a class="nav-link active" href="index.html">Gerar</a>
+      <a class="nav-link" href="settings.html">Configurações</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h1 class="h1">Gerar etiqueta</h1>
+
+    <div class="grid2">
+      <div>
+        <label>Objeto (OO)</label>
+        <select id="obj"></select>
+      </div>
+      <div>
+        <label>Material (MM)</label>
+        <select id="mat"></select>
+      </div>
+
+      <div>
+        <label>Vendedor (VV)</label>
+        <select id="vend"></select>
+      </div>
+      <div>
+        <label>Ano (AA)</label>
+        <input id="ano" type="number" min="0" max="99" placeholder="25 = 2025">
+      </div>
+
+      <div>
+        <label>Custo (1 casa) — ex.: 124.9</label>
+        <input id="custo" type="number" min="0" step="0.1" placeholder="0.0">
+      </div>
+      <div>
+        <label>Qtd de etiquetas</label>
+        <input id="qtd" type="number" min="1" value="1">
+      </div>
+
+      <div>
+        <label>Tamanho da etiqueta</label>
+        <select id="size">
+          <option value="30x15">30×15 mm (BOPP)</option>
+          <option value="58x30">58×30 mm</option>
+          <option value="60x40">60×40 mm</option>
+          <option value="50x25">50×25 mm</option>
+          <option value="40x20">40×20 mm</option>
+        </select>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" id="btnGerar">Gerar código</button>
+        <button class="btn btn-outline" id="btnImprimir">Imprimir</button>
+      </div>
+    </div>
+
+    <div class="out">
+      <div class="hint">Modelo do código: <b>OO MM VV AA CCCCC</b></div>
+      <div class="bigcode" id="codigo"></div>
+      <div class="hint" id="legenda"></div>
+    </div>
+
+    <div class="label-preview" id="preview"></div>
+    <div class="print-grid" id="printArea" style="display:none"></div>
+  </section>
+
+  <section class="card">
+    <h2 class="h2">Decodificar (bipe ou cole)</h2>
+    <input id="scan" placeholder="Ex.: 1101132301249" autocomplete="off">
+    <div class="out" id="decSaida">Aguardando leitura…</div>
+  </section>
+</main>
+
+<script src="js/maps.js"></script>
+<script src="js/code39.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
